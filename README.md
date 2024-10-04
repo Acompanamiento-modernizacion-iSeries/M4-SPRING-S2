@@ -1,4 +1,3 @@
-# M4-SPRING-S2
 # Taller: API para Manejo de Cuenta 2
 > **Larry M. Ramírez - Coach Técnico**
 
@@ -15,5 +14,6 @@
 - Gestionar las excepciones con `@ExceptionHandler` para manejar depósitos con montos inválidos y retiros con saldo insuficiente.
 - Realizar pruebas de depósito y retiro, asegurándose de que las excepciones se manejen correctamente.
 - Verificar que el saldo se actualice después de cada operación exitosa.
+
 
 **Nota:** Los talleres deben entregarse por medio de la estrategia establecida para la formación, por medio de un Pull Request desde el repositorio Fork hacia la rama main del repositorio del taller. 
