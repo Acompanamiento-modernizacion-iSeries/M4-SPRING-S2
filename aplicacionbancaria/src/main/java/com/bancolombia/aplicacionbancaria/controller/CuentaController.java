@@ -1,6 +1,8 @@
 package com.bancolombia.aplicacionbancaria.controller;
 
-import com.bancolombia.aplicacionbancaria.CuentaDB.CuentaDb;
+import com.bancolombia.aplicacionbancaria.CuentaDb.CuentaDb;
+import com.bancolombia.aplicacionbancaria.service.CuentaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -9,32 +11,37 @@ import java.math.BigDecimal;
 @RequestMapping("/cuenta")
 public class CuentaController {
 
-    private CuentaDb cuentaDb = new CuentaDb();
+   private final CuentaService cuentaService;
+    private BigDecimal nuevoSaldo;
+
+
+    public CuentaController(CuentaService cuentaService) {
+        this.cuentaService = cuentaService;
+    }
+    // private CuentaDb cuentaDb = new CuentaDb();
 
     @GetMapping("/saldo")
-    public BigDecimal obtenerSaldo(@RequestParam Integer cuenta){
-        return cuentaDb.BuscarCuenta(cuenta).getSaldo();
+    public BigDecimal obtenerSaldo(@RequestParam String cuenta){
+        BigDecimal saldo = cuentaService.obtenerSaldo(cuenta);
+        return saldo;
     }
 
+    //carga informacion por parametro
+    /*@GetMapping("/deposito/{monto}")
+    public String depositar(@PathVariable BigDecimal monto){
+        return "Deposito realizado con exito: " ;
+    }*/
 
     //carga informacion por body
-    @PostMapping("/deposito")
-    public String DepositarSaldo(@RequestParam Integer cuenta, BigDecimal monto){
-        if(cuentaDb.BuscarCuenta(cuenta).deposito(monto)){
-            return "Deposito realizado con exito";
-        }else {
-            return "No se permiten valores negativos o depositos de $0";
-        }
+   @PostMapping("/deposito")
+    public String DepositarSaldo(@RequestParam String cuenta, String monto){
+        nuevoSaldo = cuentaService.depositar(cuenta, monto);
+        return "Deposito exitoso, saldo actual: " + nuevoSaldo ;
     }
 
     @PostMapping("/retiro")
-    public String RetiroSaldo(@RequestParam Integer cuenta, BigDecimal monto){
-        if(cuentaDb.BuscarCuenta(cuenta).retiro(monto) == 0){
-            return "Retiro realizado con exito";
-        } else if (cuentaDb.BuscarCuenta(cuenta).retiro(monto) == 1) {
-            return "Monto superior a saldo disponible";
-        }else {
-            return "No se permiten valores negativos o retiros de $0";
-        }
+    public String RetiroSaldo(@RequestParam String cuenta, String monto){
+       nuevoSaldo = cuentaService.retirar(cuenta, monto);
+        return "Retiro exitoso, saldo actual: " + nuevoSaldo ;
     }
 }

@@ -1,19 +1,22 @@
-package com.bancolombia.aplicacionbancaria.CuentaDB;
-import com.bancolombia.aplicacionbancaria.Cuenta;
+package com.bancolombia.aplicacionbancaria.CuentaDb;
+
+import com.bancolombia.aplicacionbancaria.Cuenta.Cuenta;
+import com.bancolombia.aplicacionbancaria.service.CuentaService;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class CuentaDb {
-   private static List<Cuenta> listaCb = new ArrayList<>(
-           List.of(
-                   new Cuenta(1,new BigDecimal(1000.00)),
-                   new Cuenta(2,new BigDecimal(2000.00))
-           )
-   );
+    public static List<Cuenta> listaCb = //new ArrayList<>(
+            List.of(
+                    new Cuenta("1",new BigDecimal(100)),
+                    new Cuenta("2",new BigDecimal(2000.00))
+            );
+    //);
 
-    public Cuenta BuscarCuenta(Integer numCuenta){
+    public static Cuenta BuscarCuenta(String numCuenta){
 
         for (Cuenta cuenta1 : listaCb){
             if(cuenta1.getCuenta().equals(numCuenta)){
