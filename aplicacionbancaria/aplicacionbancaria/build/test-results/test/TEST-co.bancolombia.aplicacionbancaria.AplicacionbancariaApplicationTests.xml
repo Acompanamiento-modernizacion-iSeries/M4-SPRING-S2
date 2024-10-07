@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="co.bancolombia.aplicacionbancaria.AplicacionbancariaApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-10-07T01:56:47" hostname="PB0B0911287" time="1.713">
+  <properties/>
+  <testcase name="contextLoads()" classname="co.bancolombia.aplicacionbancaria.AplicacionbancariaApplicationTests" time="1.713"/>
+  <system-out><![CDATA[20:56:43.629 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [co.bancolombia.aplicacionbancaria.AplicacionbancariaApplicationTests]: AplicacionbancariaApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+20:56:43.857 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration co.bancolombia.aplicacionbancaria.AplicacionbancariaApplication for test class co.bancolombia.aplicacionbancaria.AplicacionbancariaApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2024-10-06T20:56:44.720-05:00  INFO 28788 --- [aplicacionbancaria] [    Test worker] c.b.a.AplicacionbancariaApplicationTests : Starting AplicacionbancariaApplicationTests using Java 17.0.12 with PID 28788 (started by kzuleta in C:\Users\kzuleta\Documents\UDEMY\Modernización iSeries\4.Spring Boot\M4-SPRING-S2\aplicacionbancaria\aplicacionbancaria)
+2024-10-06T20:56:44.723-05:00  INFO 28788 --- [aplicacionbancaria] [    Test worker] c.b.a.AplicacionbancariaApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2024-10-06T20:56:47.152-05:00  INFO 28788 --- [aplicacionbancaria] [    Test worker] c.b.a.AplicacionbancariaApplicationTests : Started AplicacionbancariaApplicationTests in 2.952 seconds (process running for 6.042)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
