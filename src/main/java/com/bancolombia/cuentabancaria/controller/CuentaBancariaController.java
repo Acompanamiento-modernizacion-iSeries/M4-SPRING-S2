@@ -1,7 +1,6 @@
 package com.bancolombia.cuentabancaria.controller;
 
 import com.bancolombia.cuentabancaria.model.CuentaBancariaEntity;
-import com.bancolombia.cuentabancaria.model.DomainException;
 import com.bancolombia.cuentabancaria.service.CuentaBancariaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,32 +28,20 @@ public class CuentaBancariaController {
     }
 
     @PostMapping(path = "/deposito")
-    public ResponseEntity<Object> deposito(@RequestParam BigDecimal valor, @RequestParam String cuenta)
-            throws DomainException {
+    public ResponseEntity<Object> deposito(@RequestParam BigDecimal valor, @RequestParam String cuenta){
         Map<String, Object> message = new HashMap<>();
-        CuentaBancariaEntity cuentaEntity = cuentaBancariaService.getCuenta(cuenta);
-        if(!cuentaBancariaService.validSaldo(valor)){
-            message.put("message", "El valor no puede ser negativo");
-        }else{
-            cuentaEntity.deposito(valor);
-            message.put("message", "Deposito exitoso");
-            message.put("saldo", cuentaEntity.getSaldo());
-        }
+        CuentaBancariaEntity cuentaEntity = cuentaBancariaService.deposito(valor, cuenta);
+        message.put("message", "Deposito exitoso");
+        message.put("saldo", cuentaEntity.getSaldo());
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
 
     @PostMapping(path = "/retiro")
-    public ResponseEntity<Object> retiro(@RequestParam BigDecimal valor, @RequestParam String cuenta)
-            throws DomainException {
+    public ResponseEntity<Object> retiro(@RequestParam BigDecimal valor, @RequestParam String cuenta){
         Map<String, Object> message = new HashMap<>();
-        CuentaBancariaEntity cuentaEntity = cuentaBancariaService.getCuenta(cuenta);
-        if(!cuentaBancariaService.validSaldo(valor)){
-            message.put("message", "El valor no puede ser negativo");
-        }else{
-            cuentaEntity.retiro(valor);
-            message.put("message", "Retiro exitoso");
-            message.put("saldo", cuentaEntity.getSaldo());
-        }
+        CuentaBancariaEntity cuentaEntity = cuentaBancariaService.retiro(valor, cuenta);
+        message.put("message", "Retiro exitoso");
+        message.put("saldo", cuentaEntity.getSaldo());
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
 }
